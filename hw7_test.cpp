@@ -310,6 +310,7 @@ TEST(BasicBSTMapTests, MoveConstructorCheck)
 TEST(BasicBSTMapTests, MoveAssignmentCheck)
 {
   // create a map
+  
   BSTMap<char,int> m1;
   m1.insert('b', 2);
   m1.insert('a', 1);
@@ -320,7 +321,9 @@ TEST(BasicBSTMapTests, MoveAssignmentCheck)
   m2.insert('d', 4);
   ASSERT_EQ(1, m2.size());
   // move first to second
+  
   m2 = std::move(m1);
+  
   ASSERT_EQ(0, m1.size());
   ASSERT_EQ(3, m2.size());
   ASSERT_EQ(true, m2.contains('a') && m2.contains('b') && m2.contains('c'));
@@ -329,6 +332,7 @@ TEST(BasicBSTMapTests, MoveAssignmentCheck)
   ASSERT_EQ(2, m1.size());
   ASSERT_EQ(true, m1.contains('e') && m1.contains('f'));
   ASSERT_EQ(false, m2.contains('e') || m2.contains('f'));
+  
   // create an empty map
   BSTMap<char,int> m3;
   ASSERT_EQ(0, m3.size());
@@ -338,6 +342,7 @@ TEST(BasicBSTMapTests, MoveAssignmentCheck)
   ASSERT_EQ(0, m2.size());
   ASSERT_EQ(2, m1.size());
   ASSERT_EQ(true, m3.contains('a') && m3.contains('b') && m3.contains('c'));
+  
 }
 
 
