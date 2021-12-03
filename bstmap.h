@@ -429,11 +429,15 @@ void BSTMap<K,V>::find_keys(const K& k1, const K& k2, const Node* st_root, Array
    if(!st_root){
     return;
   }
-  find_keys(k1,k2,st_root->left,keys);
+  if(st_root->key > k1){
+    find_keys(k1,k2,st_root->left,keys);
+  }
   if(st_root->key >= k1 and st_root->key <= k2){
     keys.insert(st_root->key, keys.size());
   }
-  find_keys(k1,k2,st_root->right,keys);
+  if(st_root->key < k2){
+    find_keys(k1,k2,st_root->right,keys);
+  }
   return;
 }
 
